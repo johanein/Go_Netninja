@@ -9,22 +9,6 @@ import (
 	"strings"
 )
 
-type bill struct {
-	name  string
-	items map[string]float64
-	tips  float64
-}
-
-// add an item to the bill using receiver function
-func (b *bill) addItem(name string, price float64) {
-	b.items[name] = price
-}
-
-// add tip to the bill using receiver function
-func (b *bill) updateTip(tip float64) {
-	b.tips = tip
-}
-
 func newBill(name string) bill {
 	b := bill{
 		name:  name,
@@ -65,7 +49,8 @@ func promptOptions(b bill) {
 		b.addItem(name, floatedString)
 		promptOptions(b)
 	case "s":
-		fmt.Println("you chose to save the bill", b)
+		b.save()
+		fmt.Println("you saved the file - ", b.name)
 	case "t":
 		tip, _ := getInput("Enter tip amount ($)", reader)
 		floatedTip, err := strconv.ParseFloat(tip, 64)

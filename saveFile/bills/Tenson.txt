@@ -1,0 +1,4 @@
+Bill breakdown 
+Beer:                     ...$50 
+                    tips: ...10 
+                   total: ...$60.00
